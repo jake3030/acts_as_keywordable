@@ -11,14 +11,13 @@ module ActiveRecord
 
       module ClassMethods
         def acts_as_keywordable(options = {})
-          write_inheritable_attribute(:acts_as_keywordable_options, {
-            :keywordable_type => ActiveRecord::Base.send(:class_name_of_active_record_descendant, self).to_s,
+          class_attribute(:acts_as_keywordable_options, {
+            :keywordable_type => self.base_class.name.to_s,
             :from => options[:from]
           })
 
-          class_inheritable_reader :acts_as_keywordable_options
 
-          has_many :keywordings, :as => :keywordable, :dependent => true
+          has_many :keywordings, :as => :keywordable, :dependent => :destroy
           has_many :keywords, :through => :keywordings
 
           include ActiveRecord::Acts::Keywordable::InstanceMethods
