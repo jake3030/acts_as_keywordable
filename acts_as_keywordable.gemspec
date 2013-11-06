@@ -10,8 +10,9 @@ Gem::Specification.new do |spec|
   spec.email         = ["jake3030@no-reply.github.com"]
   spec.description   = %q{real quick gem to add keywords across multiple models}
   spec.summary       = %q{see description}
-  spec.homepage      = ""
+  spec.homepage      = "http://github.com/jake3030/acts_as_keywordable"
   spec.license       = "MIT"
+  spec.rubyforge_project = "acts_as_keywordable"
 
   spec.files         = `git ls-files`.split($/)
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
